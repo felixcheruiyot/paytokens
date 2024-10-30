@@ -38,10 +38,10 @@ func (v *encryptedToken) verifyMessageSignature(recipient string) error {
 		return err
 	}
 	data := constructSignedData(
-		GoogleSenderId,
+		"Google",
 		recipient,
 		string(v.Protocol),
-		strings.ReplaceAll(v.SignedMessage.Raw(), "\\u003d", "="),
+		v.SignedMessage.Raw()
 	)
 
 	if err := verifySignature(publicKey, data, v.Signature); err != nil {
