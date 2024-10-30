@@ -41,7 +41,7 @@ func (v *encryptedToken) verifyMessageSignature(recipient string) error {
 		"Google",
 		recipient,
 		string(v.Protocol),
-		v.SignedMessage.Raw()
+		v.SignedMessage.Raw(),
 	)
 
 	if err := verifySignature(publicKey, data, v.Signature); err != nil {
